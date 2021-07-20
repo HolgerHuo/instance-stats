@@ -14,7 +14,7 @@ client = Mastodon(
 me = client.account_verify_credentials()
 
 instance = client.instance()
-time = datetime.utcnow().strftime("%Y-%m%-d %H:%I:%S")
+time = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
 
 text = """
 koyu.space is currently running version %%version%%.
