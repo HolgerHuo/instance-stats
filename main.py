@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 from mastodon import Mastodon
-import psutil
 import creds
 import sys
 from datetime import datetime
@@ -30,8 +29,6 @@ text = text.replace("%%version%%", instance.version)
 text = text.replace("%%usercount%%", str(instance.stats.user_count))
 text = text.replace("%%statuscount%%", str(instance.stats.status_count))
 text = text.replace("%%domaincount%%", str(instance.stats.domain_count))
-text = text.replace("%%cpu%%", str(int(psutil.cpu_percent()))+"%")
-text = text.replace("%%ram%%", str(int(psutil.virtual_memory().percent))+"%")
 text = text.replace("%%timestamp%%", time)
 
 dryrun = False
