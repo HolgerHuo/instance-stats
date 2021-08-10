@@ -39,6 +39,6 @@ except:
   pass
 
 if not dryrun:
-  client.toot(text)
+  client.status_post(text, visibility=config.visibility)
 else:
   print(text)
