@@ -1,14 +1,14 @@
 #!/usr/bin/python3
 from mastodon import Mastodon
-import creds
+import config
 import sys
 from datetime import datetime
 
 client = Mastodon(
-  client_id=creds.client_id,
-  client_secret=creds.client_secret,
-  access_token=creds.access_token,
-  api_base_url=creds.instance
+  client_id=config.client_id,
+  client_secret=config.client_secret,
+  access_token=config.access_token,
+  api_base_url=config.instance
 )
 me = client.account_verify_credentials()
 
@@ -16,13 +16,13 @@ instance = client.instance()
 time = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
 
 text = """
-koyu.space is currently running version %%version%%.
-There are %%usercount%% users registered who posted %%statuscount%% statuses.
-We are currently federating with %%domaincount%% domains.
-Our CPU load is %%cpu%% and the RAM is at %%ram%%.
-These stats have been noted at %%timestamp%% UTC.
+#island岛屿晚间播报 #islandstats 
+晚上好~各位islanders
+目前本实例的版本号为: %%version%%.
+共有 %%usercount%% 位超可爱的你们发出了 %%statuscount%% 条嘟嘟
+我们共发现了 %%domaincount%% 个实例并和他们发出了友好互动
 
-#koyustats :pb:
+期待与各位Islanders一同创造的明天~
 """
 
 text = text.replace("%%version%%", instance.version)
