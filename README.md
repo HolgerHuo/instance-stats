@@ -1,7 +1,10 @@
 # Island 岛屿 Stats bot
 
-The Island 岛屿 statistic bot. 
+The [Island 岛屿](https://mast.dragon-fly.club) [statistic bot](https://mast.dragon-fly.club/@islandstats). 
+
 Install Python 3 and requirements and set a cronjob to run whenever you want to post statistics.
+
+`pip3 install -r requirements.txt`
 
 An example configuration file named `config.py` is below.
 
