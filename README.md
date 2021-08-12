@@ -1,5 +1,7 @@
 # Island 岛屿 Stats bot
 
+![GitHub last commit](https://img.shields.io/github/last-commit/holgerhuo/instance-stats)![GitHub release (latest by date)](https://img.shields.io/github/v/release/holgerhuo/instance-stats)![GitHub](https://img.shields.io/github/license/holgerhuo/instance-stats)![GitHub all releases](https://img.shields.io/github/downloads/holgerhuo/instance-stats/total)![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/holgerhuo/instance-stats)
+
 The [Island 岛屿](https://mast.dragon-fly.club) [statistic bot](https://mast.dragon-fly.club/@islandstats). 
 
 Install Python 3 and requirements and set a cronjob to run whenever you want to post statistics.
