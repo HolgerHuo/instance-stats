@@ -17,6 +17,8 @@ time = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
 
 instance = requests.get(config.source_instance+'/api/v1/instance').json()
 
+mau = requests.get(config.source_instance+'/api/v2/instance').json()['usage']['users']['active_month']
+
 
 if not config.show_change or not os.path.exists('db.json'):
   text = text.replace("%%version%%", instance['version'])
@@ -24,6 +26,7 @@ if not config.show_change or not os.path.exists('db.json'):
   text = text.replace("%%statuscount%%", str(instance['stats']['status_count']))
   text = text.replace("%%domaincount%%", str(instance['stats']['domain_count']))
   text = text.replace("%%timestamp%%", time)
+  text = text.replace("%%mau%%", str(mau))
 else:
   
   f = open('db.json', 'r')
@@ -33,7 +36,8 @@ else:
   domain_change = instance['stats']['domain_count']-db["domain_count"]
   status_change = instance['stats']['status_count']-db["status_count"]
   user_change = instance['stats']['user_count']-db["user_count"]
-  
+  mau_change = mau - db['mau']
+
   if instance['version'] == db["version"]:
     text = text.replace("%%version%%", instance['version'])
   else:
@@ -42,8 +46,9 @@ else:
   text = text.replace("%%statuscount%%", str(instance['stats']['status_count']) + '(%+-d)'%status_change)
   text = text.replace("%%domaincount%%", str(instance['stats']['domain_count']) + '(%+-d)'%domain_change)
   text = text.replace("%%timestamp%%", time)
+  text = text.replace("%%mau%%", str(mau) + '(%+-d)'%mau_change)
 
-db={'version':instance['version'],'user_count':instance['stats']['user_count'],'status_count':instance['stats']['status_count'],'domain_count': instance['stats']['domain_count']}
+db={'version':instance['version'],'user_count':instance['stats']['user_count'],'status_count':instance['stats']['status_count'],'domain_count': instance['stats']['domain_count'], 'mau': mau}
 db = json.dumps(db)
 f = open('db.json', 'w')
 f.write(db)
